@@ -3,7 +3,7 @@ import { tmdbRequest } from '@/lib/tmdb';
 import { Movie } from '@/app/entities/Movie';
 
 
-export async function GET(request: Request) {
+export async function GET() {
     const data:Movie[] = await tmdbRequest("/discover/movie");
     if (data.length>0){
     return NextResponse.json({ message: 'success',data }, { status: 200 })

@@ -1,6 +1,3 @@
-import { Movie } from "@/app/entities/Movie";
-import { TVShow } from "@/app/entities/TVShow";
-
 const apiKey = process.env.TMDB_ACCESS_TOKEN;
 const baseUrl = "https://api.themoviedb.org/3";
 
@@ -12,7 +9,7 @@ const options = {
   },
 };
 
-export const tmdbRequest = async (endpoint: string, params = {}) => {
+export const tmdbRequest = async (endpoint: string) => {
   
   const url = `${baseUrl}${endpoint}?language=en-US&page=1`;
   try {
