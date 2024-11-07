@@ -19,6 +19,7 @@ export const tmdbRequest = async (endpoint: string) => {
       const data = await response.json();
       return data.results;
     } else {
+      console.log(`Error on api tmdb : ${response.status}`)
       return [];
     }
   } catch(error){
