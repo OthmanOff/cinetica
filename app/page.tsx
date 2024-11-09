@@ -21,6 +21,7 @@ interface FormData {
 export default function CardWithForm() {
   const router = useRouter();
   const [isLogged, setisLogged] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState<FormData>({
     username: "",
     password: "",
@@ -33,10 +34,14 @@ export default function CardWithForm() {
       ...formData,
       [e.currentTarget.name]: e.currentTarget.value,
     });
+    if (e.currentTarget.value.length == 0) {
+      setErrorMessage("");
+    }
   };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      
       const response = await fetch("/api/authentification", {
         method: "POST",
         headers: {
@@ -48,6 +53,8 @@ export default function CardWithForm() {
       if (response.status == 200) {
         setisLogged(true);
         router.push("/home");
+      } else {
+        setErrorMessage("Username or password is wrong, please try again");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -79,6 +86,7 @@ export default function CardWithForm() {
                 value={formData.password}
                 onChange={handleChange}
               />
+              <span className="text-red-700 text-sm">{errorMessage}</span>
             </div>
           </div>
         </CardContent>
