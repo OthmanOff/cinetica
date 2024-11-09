@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
             { status: 401 }
           );
     }
-  } catch (error: any) {
+  } catch (error:any) {
     // Handle any errors
     return NextResponse.json(
       { message: "Error submitting form", error: error.message },

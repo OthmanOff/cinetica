@@ -1,7 +1,7 @@
-'use client'
-import {use, useState} from "react"
-import { Button } from "@/components/ui/button"
-import { useRouter } from 'next/navigation'
+"use client";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 import {
   Card,
@@ -9,77 +9,83 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 interface FormData {
   username: string;
   password: string;
 }
 
-
 export default function CardWithForm() {
-  const router = useRouter()
-  const [isLogged,setisLogged] = useState(false);
+  const router = useRouter();
+  const [isLogged, setisLogged] = useState(false);
   const [formData, setFormData] = useState<FormData>({
-    username: '',
-    password: ''
+    username: "",
+    password: "",
   });
-  if (isLogged){
-    router.push("/home")
+  if (isLogged) {
+    router.push("/home");
   }
-  const handleChange = (e:React.FormEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
-      [e.currentTarget.name]: e.currentTarget.value
+      [e.currentTarget.name]: e.currentTarget.value,
     });
   };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/authentification', {
-        method: 'POST',
+      const response = await fetch("/api/authentification", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
-      console.log(response.status)
-      if (response.status == 200){
+      console.log(response.status);
+      if (response.status == 200) {
         setisLogged(true);
-        router.push("/home")
-        
+        router.push("/home");
       }
-      
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
   };
   return (
     <form onSubmit={handleSubmit}>
-    <Card className="w-[350px]">
-      <CardHeader>
-        <CardTitle className="flex justify-center">Cinetica</CardTitle>
-      </CardHeader>
-      <CardContent>
-    
+      <Card className="w-[350px]">
+        <CardHeader>
+          <CardTitle className="flex justify-center">Cinetica</CardTitle>
+        </CardHeader>
+        <CardContent>
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="name">Username</Label>
-              <Input name="username" placeholder="Enter your username" value={formData.username} onChange={handleChange}/>
+              <Input
+                name="username"
+                placeholder="Enter your username"
+                value={formData.username}
+                onChange={handleChange}
+              />
             </div>
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="framework">Password</Label>
-              <Input name="password" placeholder="Enter your password" type="password" value={formData.password} onChange={handleChange}/>
+              <Input
+                name="password"
+                placeholder="Enter your password"
+                type="password"
+                value={formData.password}
+                onChange={handleChange}
+              />
             </div>
           </div>
-      </CardContent>
-      <CardFooter className="flex justify-center">
-        <Button type="submit">Login</Button>
-      </CardFooter>
-    </Card>
+        </CardContent>
+        <CardFooter className="flex justify-center">
+          <Button type="submit">Login</Button>
+        </CardFooter>
+      </Card>
     </form>
-  )
+  );
 }
