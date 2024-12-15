@@ -8,7 +8,7 @@ interface CardProps {
 }
 const ShowCard: React.FC<CardProps> = ({ movie }: CardProps) => {
   return (
-    <Link href={`/home/movies/now-playing/${movie.id}`}>
+    <Link href={`/home/shows/${movie.id}`}>
       <div
         className={cn(
           "relative group rounded-lg overflow-hidden shadow-lg cursor-pointer transform transition-transform hover:scale-105"

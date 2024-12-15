@@ -17,7 +17,7 @@ export default function RootLayout({
           <Navbar />
           <div className="flex flex-row h-full w-full dark:text-white">
             <Sidebar />
-            <div className="flex-[2] w-full h-full p-2">{children}</div>
+            <div className="flex-[2] w-full h-full p-2 justify-center items-center">{children}</div>
           </div>
         </div>
       </ApplicationRepositoryContextProvider>

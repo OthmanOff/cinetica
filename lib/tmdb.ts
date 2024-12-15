@@ -11,18 +11,37 @@ const options = {
 
 export const tmdbRequest = async (endpoint: string) => {
   const url = `${baseUrl}${endpoint}?language=en-US&page=1`;
+  console.log(url);
+  try {
+    const response = await fetch(url, options);
+    console.log(response);
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      return data.results;
+    } else {
+      console.log(`Error on api tmdb : ${response.status}`);
+      return [];
+    }
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+};
+
+export const tmdbRequestOne = async (endpoint: string) => {
+  const url = `${baseUrl}${endpoint}?language=en-US&page=1`;
   try {
     const response = await fetch(url, options);
     if (response.ok) {
-      
       const data = await response.json();
-      return data.results;
+      return data;
     } else {
-      console.log(`Error on api tmdb : ${response.status}`)
+      console.log(`Error on api tmdb : ${response.status}`);
       return [];
     }
-  } catch(error){
-    console.error(error)
-    return ;
+  } catch (error) {
+    console.error(error);
+    return error;
   }
 };

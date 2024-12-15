@@ -43,4 +43,14 @@ export class MovieRepositoryTMDB implements MovieRepository{
             throw new Error("Error while fetching : /api/movies/discover");
         }
     }
+    async getInfoMovie(id:number): Promise<Movie>{
+        try{
+            const req = await fetch(`/api/movies/${id}`);
+            const data = await req.json()
+            return data.data as Promise<Movie>
+        }
+        catch{
+            throw new Error("Error while fetching : /api/movies/${id}");
+        }
+    }
 }

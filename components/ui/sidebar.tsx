@@ -13,7 +13,7 @@ const Sidebar: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="relative h-screen flex overflow-hidden">
+    <div className="relative h-screen flex">
       <div
         className={`fixed top-0 left-0 h-full w-64 bg-white dark:bg-black text-xl border-r-2 border-stone-400/50 transform transition-transform duration-300 z-50 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
@@ -61,13 +61,13 @@ const Sidebar: React.FC<React.PropsWithChildren> = ({ children }) => {
 
   
       <div
-        className={`flex-1 h-full overflow-auto transition-all duration-300 ${
+        className={`md:hidden flex-1 h-full overflow-auto transition-all duration-300 ${
           isOpen ? "ml-64" : "ml-0"
         } md:ml-64`}
       >
 
         <button
-          className="md:hidden p-2 text-white rounded-full fixed top-4 left-2 z-50"
+          className="text-black md:hidden p-2 dark:text-white rounded-full fixed top-4 left-2 z-50"
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-label="Toggle Sidebar"

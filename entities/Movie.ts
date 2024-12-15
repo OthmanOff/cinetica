@@ -1,7 +1,11 @@
+type Genre = {
+  id: number;
+  name: string;
+};
 export interface Movie {
     adult: boolean;
     backdrop_path: string | null;
-    genre_ids: number[]; // Utilisé si les genres sont des IDs
+    genres: Genre[];
     id: number;
     original_language: string;
     original_title: string;
@@ -13,4 +17,5 @@ export interface Movie {
     video: boolean;
     vote_average: number;
     vote_count: number;
+    runtime:number;
   }

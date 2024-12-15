@@ -5,4 +5,5 @@ export interface MovieRepository{
     getNowPlayingMovies(): Promise<Movie[]>;
     getTopRatedMovies(): Promise<Movie[]>;
     getDiscoverMovies(): Promise<Movie[]>;
+    getInfoMovie(id:number): Promise<Movie>;
 }
