@@ -1,6 +1,6 @@
 "use client";
 import useGetPopularShows from "./useCase/useGetPopularShows";
-import ShowCard from "../../../../components/ui/ShowCard";
+import ShowCard from "@/components/ui/ShowCard";
 export default function Popular() {
   const { data, isLoading, isError } = useGetPopularShows();
   if (isLoading) return <p>Loading...</p>;

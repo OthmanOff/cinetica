@@ -1,6 +1,6 @@
 "use client";
 import useGetPopularMovies from "./useCase/useGetPopularMovies";
-import MovieCard from "../../../../components/ui/MovieCard";
+import MovieCard from "@/components/ui/MovieCard";
 export default function Popular() {
   const { data, isLoading, isError } = useGetPopularMovies();
   if (isLoading) return <p>Loading...</p>;

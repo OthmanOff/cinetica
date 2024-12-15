@@ -1,6 +1,4 @@
 'use client'
-import MovieCard from "../../../components/ui/MovieCard";
-import ShowCard from "../../../components/ui/ShowCard";
 import useGetDiscoverMoviesAndShows from "./useCase/useGetDiscoverMoviesAndShows";
 import DiscoverCarrousel from "./Components/discoverCarrousel";
 const Discover = () => {
