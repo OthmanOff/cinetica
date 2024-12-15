@@ -17,14 +17,14 @@ export async function middleware(req: NextRequest) {
     {
         if (!token)
             {
-                return NextResponse.redirect(new URL("/",req.url));
+                return NextResponse.redirect(new URL("/login",req.url));
             }
     }
     if(req.nextUrl.pathname.startsWith("/api")){
         console.log("api")
         if (!token)
             {
-                return NextResponse.redirect(new URL("/",req.url));
+                return NextResponse.redirect(new URL("/login",req.url));
             }
     }
     return NextResponse.next();
