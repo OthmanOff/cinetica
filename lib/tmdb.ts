@@ -10,7 +10,6 @@ const options = {
 };
 
 export const tmdbRequest = async (endpoint: string) => {
-  
   const url = `${baseUrl}${endpoint}?language=en-US&page=1`;
   try {
     const response = await fetch(url, options);

@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 import {
   Card,
@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useRouter } from "next/navigation";
 
 interface FormData {
   username: string;
@@ -19,16 +20,14 @@ interface FormData {
 }
 
 export default function CardWithForm() {
+  
   const router = useRouter();
-  const [isLogged, setisLogged] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState<FormData>({
     username: "",
     password: "",
   });
-  if (isLogged) {
-    router.push("/home");
-  }
+  
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
@@ -38,47 +37,39 @@ export default function CardWithForm() {
       setErrorMessage("");
     }
   };
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      
-      const response = await fetch("/api/authentification", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-      console.log(response.status);
-      if (response.status == 200) {
-        setisLogged(true);
-        router.push("/home");
-      } else {
-        setErrorMessage("Username or password is wrong, please try again");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
+  const handleSubmit = async (e: React.FormEvent)=>{
+        e.preventDefault();
+        const result = await signIn("credentials", {
+          redirect: false, 
+          username:formData.username,
+          password:formData.password
+        });
+        console.log(result)
+        if (result?.ok) {
+          // Redirect user after successful login
+          router.push("/home");
+        }
   };
   return (
     <form onSubmit={handleSubmit}>
-      <Card className="w-[350px]">
+      <Card className="flex flex-col rounded-none justify-between h-screen w-screen md:w-[350px] md:h-full md:rounded-xl md:shadow md:border dark:bg-black dark:text-white ">
         <CardHeader>
-          <CardTitle className="flex justify-center">Cinetica</CardTitle>
+          <CardTitle className="text-3xl flex justify-center py-4 md:text-2xl ">Cinetica</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid w-full items-center gap-4">
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="name">Username</Label>
+          <div className="flex flex-col w-full items-center gap-10 md:gap-4">
+            <div className="flex flex-col space-y-1.5 w-[60%]">
+              <Label htmlFor="name" className="text-2xl md:text-base">Username</Label>
               <Input
+                
                 name="username"
                 placeholder="Enter your username"
                 value={formData.username}
                 onChange={handleChange}
               />
             </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="framework">Password</Label>
+            <div className="flex flex-col space-y-1.5 w-[60%]">
+              <Label htmlFor="framework" className="text-2xl md:text-base">Password</Label>
               <Input
                 name="password"
                 placeholder="Enter your password"
@@ -88,10 +79,11 @@ export default function CardWithForm() {
               />
               <span className="text-red-700 text-sm">{errorMessage}</span>
             </div>
+            <Button type="submit">Login</Button>
           </div>
         </CardContent>
         <CardFooter className="flex justify-center">
-          <Button type="submit">Login</Button>
+          
         </CardFooter>
       </Card>
     </form>
