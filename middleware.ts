@@ -23,7 +23,6 @@ export async function middleware(req: NextRequest) {
             }
     }
     if(req.nextUrl.pathname.startsWith("/api")){
-        console.log("api")
         if (!token)
             {
                 return NextResponse.redirect(new URL("/login",req.url));

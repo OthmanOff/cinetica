@@ -7,10 +7,7 @@ export async function POST(request: NextRequest) {
     const { username, password } = await request.json();
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (
-      username === user.username &&isMatch
-      
-    ) {
+    if (username === user.username && isMatch) {
       return NextResponse.json(
         {
           message: "Username and Password ok !",
@@ -18,16 +15,14 @@ export async function POST(request: NextRequest) {
         { status: 200 }
       );
     } else {
-        console.log(bcrypt.hashSync(password,10),user.password)
-        console.log(isMatch)
-        return NextResponse.json(
-            {
-              message: "Username and Password not ok !",
-            },
-            { status: 401 }
-          );
+      return NextResponse.json(
+        {
+          message: "Username and Password not ok !",
+        },
+        { status: 401 }
+      );
     }
-  } catch (error:any) {
+  } catch (error: any) {
     // Handle any errors
     return NextResponse.json(
       { message: "Error submitting form", error: error.message },

@@ -21,7 +21,7 @@ export default function CardWithForm() {
   } = useLoginUseCase();
   return (
     <form onSubmit={LoginAndRedirectIfSuccessful}>
-      <Card className="flex flex-col rounded-none justify-between h-screen w-screen md:w-[350px] md:h-full md:rounded-xl md:shadow md:border dark:bg-black dark:text-white ">
+      <Card className="flex flex-col rounded-none justify-between h-screen w-screen md:w-[350px] md:h-full md:rounded-xl md:shadow md:border dark:bg-black dark:text-white">
         <CardHeader>
           <CardTitle className="text-3xl flex justify-center py-4 md:text-2xl ">
             Cinetica

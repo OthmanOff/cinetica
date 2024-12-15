@@ -7,7 +7,7 @@ import MovieCard from "@/components/ui/MovieCard";
 import ShowCard from "@/components/ui/ShowCard";
 import { Movie } from "@/entities/Movie";
 import { TVShow } from "@/entities/TVShow";
-import { Film,Tv } from "lucide-react";
+import { Film, Tv } from "lucide-react";
 const DiscoverCarrousel = ({
   movies,
   shows,
@@ -16,7 +16,7 @@ const DiscoverCarrousel = ({
   shows: TVShow[];
 }) => {
   return (
-    <div>
+    <div className="flex flex-col p-2">
       <span className="flex items-center gap-2 text-2xl m-4">
         <Film />
         Movies

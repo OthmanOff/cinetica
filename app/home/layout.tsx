@@ -15,7 +15,7 @@ export default function RootLayout({
       <ApplicationRepositoryContextProvider> 
         <div className="flex h-screen flex-col w-screen">
           <Navbar />
-          <div className="flex flex-rowh-full dark:text-white">
+          <div className="flex flex-row h-full w-full dark:text-white">
             <Sidebar />
             <div className="flex-[2] w-full h-full p-2">{children}</div>
           </div>

@@ -23,7 +23,7 @@ export const useLoginUseCase = () => {
       username: formData.username,
       password: formData.password,
     });
-    console.log(result);
+  
     if (result?.ok) {
       // Redirect user after successful login
       router.push("/home");

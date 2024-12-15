@@ -1,6 +1,6 @@
 'use client'
 import useGetDiscoverMoviesAndShows from "./useCase/useGetDiscoverMoviesAndShows";
-import DiscoverCarrousel from "./Components/discoverCarrousel";
+import DiscoverCarrousel from "../../../components/ui/discoverCarrousel";
 const Discover = () => {
   const { movies, shows, isError, isLoading } = useGetDiscoverMoviesAndShows();
   if (isLoading) return <p>Loading...</p>;
