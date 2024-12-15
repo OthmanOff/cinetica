@@ -11,10 +11,8 @@ const useGetShowData = (id:number) => {
     queryKey: ["shows-"+id],
     queryFn: async () => await showRepository.getInfoShows(id),
   });
-  console.log(data);
   const show = data as TVShow;
-  console.log("from usecase");
-  console.log(show);
+ 
   return { show, isLoading, isError };
 };
 

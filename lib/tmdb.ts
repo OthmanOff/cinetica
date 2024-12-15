@@ -11,13 +11,13 @@ const options = {
 
 export const tmdbRequest = async (endpoint: string) => {
   const url = `${baseUrl}${endpoint}?language=en-US&page=1`;
-  console.log(url);
+
   try {
     const response = await fetch(url, options);
-    console.log(response);
+
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
+
       return data.results;
     } else {
       console.log(`Error on api tmdb : ${response.status}`);

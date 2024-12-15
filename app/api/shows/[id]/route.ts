@@ -8,7 +8,6 @@ export async function GET(
 ) {
   const id = (await params).id;
   const data: TVShow = await tmdbRequestOne("/tv/" + id);
-  console.log(data);
   if (data) {
     return NextResponse.json({ message: "success", data }, { status: 200 });
   } else {
