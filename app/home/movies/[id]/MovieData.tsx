@@ -34,6 +34,8 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ id }) => {
             src={baseUrl + movie.poster_path}
             alt={movie.title}
             className="w-64 h-96 object-cover rounded-xl shadow-lg"
+            width="200"
+            height="300"
           />
         </div>
 

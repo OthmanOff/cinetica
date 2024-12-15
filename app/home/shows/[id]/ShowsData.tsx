@@ -29,12 +29,21 @@ const TVShowPage: React.FC<ShowDetailsProps> = ({ id }) => {
             src={baseUrl + show.poster_path}
             alt={show.name}
             className="w-64 h-96 object-cover rounded-xl shadow-lg"
+            width="200"
+            height="300"
           />
         </div>
 
         <div className="md:w-2/3 md:pl-10">
           <h1 className="text-4xl sm:text-5xl font-bold">{show.name}</h1>
-          <p className="text-lg sm:text-xl mt-2"></p>
+          <p className="text-lg sm:text-xl mt-2">
+            {show.genres.map((genre) => genre.name).join(", ")} |{" "}
+            {show.first_air_date}{" "}
+          </p>
+          <p>
+            {show.number_of_episodes} episodes | {show.number_of_seasons}
+            seasons
+          </p>
 
           <div className="flex items-center mt-4">
             <span className="text-xl font-semibold">{show.vote_average}</span>

@@ -8,7 +8,7 @@ export async function middleware(req: NextRequest) {
   const token = await getToken({ req, secret });
 
   // Redirect from /home to /home/discover
-  if (req.nextUrl.pathname === "/home") {
+  if (req.nextUrl.pathname.startsWith("/home")) {
     if (token) {
       return NextResponse.redirect(new URL("/home/discover", req.url));
     }

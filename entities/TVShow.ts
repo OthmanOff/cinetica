@@ -1,7 +1,12 @@
+type Genre = {
+  id: number;
+  name: string;
+};
+
 export interface TVShow {
   adult: boolean;
   backdrop_path: string | null;
-  genre_ids: number[];
+  genres: Genre[];
   id: number;
   origin_country: string[];
   original_language: string;
@@ -13,4 +18,6 @@ export interface TVShow {
   name: string;
   vote_average: number;
   vote_count: number;  
+  number_of_episodes: number;
+  number_of_seasons: number;
 }
