@@ -1,12 +1,12 @@
-import { Movie } from "@/entities/Movie";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { TVShow } from "@/entities/TVShow";
 const baseUrl = "https://image.tmdb.org/t/p/w500";
 interface CardProps {
-  movie: Movie;
+  movie: TVShow;
 }
-const MovieCard: React.FC<CardProps> = ({ movie }: CardProps) => {
+const ShowCard: React.FC<CardProps> = ({ movie }: CardProps) => {
   return (
     <Link href={`/home/movies/now-playing/${movie.id}`}>
       <div
@@ -16,7 +16,7 @@ const MovieCard: React.FC<CardProps> = ({ movie }: CardProps) => {
       >
         <Image
           src={baseUrl + movie.poster_path}
-          alt={movie.title}
+          alt={movie.name}
           className="w-full h-full object-cover"
           width="200"
           height="300"
@@ -25,7 +25,7 @@ const MovieCard: React.FC<CardProps> = ({ movie }: CardProps) => {
         <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
         <div className="absolute bottom-0 left-0 right-0 p-4 text-white bg-gradient-to-t from-black/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-          <h3 className="text-lg font-semibold">{movie.title}</h3>
+          <h3 className="text-lg font-semibold">{movie.name}</h3>
           <p className="text-sm text-gray-300 line-clamp-2">{movie.overview}</p>
         </div>
       </div>
@@ -33,4 +33,4 @@ const MovieCard: React.FC<CardProps> = ({ movie }: CardProps) => {
   );
 };
 
-export default MovieCard;
+export default ShowCard;

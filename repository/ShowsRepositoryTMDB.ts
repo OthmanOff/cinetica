@@ -12,7 +12,7 @@ export class ShowRepositoryTMDB implements ShowRepository{
             throw new Error("Error while fetching : /api/shows/popular");
         }
     }
-    async getOnAirgShows(): Promise<TVShow[]>{
+    async getOnAirShows(): Promise<TVShow[]>{
         try{
             const req = await fetch("/api/shows/on-the-air");
             const data = await req.json()
