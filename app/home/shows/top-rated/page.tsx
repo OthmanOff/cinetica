@@ -1,6 +1,6 @@
 "use client";
 import useGetTopRatedShows from "./useCase/useGetTopRatedShows";
-import ShowCard from "../components/ShowCard";
+import ShowCard from "../../../../components/ui/ShowCard";
 export default function Popular() {
   const { data, isLoading, isError } = useGetTopRatedShows();
   if (isLoading) return <p>Loading...</p>;

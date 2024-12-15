@@ -8,7 +8,7 @@ export interface TVShow {
   original_name: string;
   overview: string;
   popularity: number;
-  poster_path: string | null;
+  poster_path: string;
   first_air_date: string;
   name: string;
   vote_average: number;

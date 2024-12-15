@@ -32,4 +32,14 @@ export class ShowRepositoryTMDB implements ShowRepository{
             throw new Error("Error while fetching : /api/shows/top-rated");
         }
     }
+    async getDiscoverShows(): Promise<TVShow[]> {
+            try{
+                const req = await fetch("/api/shows/discover");
+                const data = await req.json()
+                return data.data as Promise<TVShow[]>
+            }
+            catch{
+                throw new Error("Error while fetching : /api/shows/discover");
+            }
+    }
 }

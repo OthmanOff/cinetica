@@ -4,10 +4,10 @@ import Link from "next/link";
 
 const Sidebar: React.FC = () => {
   return (
-    <div className="text-xl flex flex-[0.5]  flex-col border-r-2 border-stone-400/50 h-full box-border">
+    <div className="text-xl flex flex-[0.5]  flex-col border-r-2 border-stone-400/50 h-full box-border ">
       <span className="flex gap-2 p-4 ">
         <LayoutGrid />
-        Discover
+        <Link href="/home/discover">Discover</Link>
       </span>
       <span className=" text-[#646464] px-2 ">Movies</span>
       <div className="flex flex-col px-4 my-2 gap-2">

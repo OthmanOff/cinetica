@@ -1,8 +1,8 @@
 "use client";
-import useGetOnTheAirShows from "./useCase/useGetOnTheAirShows";
-import ShowCard from "../components/ShowCard";
+import useGetPopularMovies from "./useCase/useGetOnTheAirShows";
+import ShowCard from "../../../../components/ui/ShowCard";
 export default function Popular() {
-  const { data, isLoading, isError } = useGetOnTheAirShows();
+  const { data, isLoading, isError } = useGetPopularMovies();
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Error :&#40;</p>;
   return (
