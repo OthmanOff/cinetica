@@ -1,6 +1,6 @@
 import {  NextResponse } from 'next/server';
 import { tmdbRequest } from '@/lib/tmdb';
-import { Movie } from '@/app/entities/Movie';
+import { Movie } from '@/entities/Movie';
 
 export async function GET() {
     const data:Movie[] = await tmdbRequest("/movie/top_rated");

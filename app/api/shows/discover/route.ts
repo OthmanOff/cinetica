@@ -1,6 +1,6 @@
 import {  NextResponse } from 'next/server';
 import { tmdbRequest } from '@/lib/tmdb';
-import { TVShow } from '@/app/entities/TVShow';
+import { TVShow } from '@/entities/TVShow';
 
 
 export async function GET() {

@@ -1,4 +1,4 @@
-import { TVShow } from "@/app/entities/TVShow";
+import { TVShow } from "@/entities/TVShow";
 import {ShowRepository} from "@/repository/interface/ShowRepository"
 
 export class ShowRepositoryTMDB implements ShowRepository{

@@ -1,3 +1,4 @@
+'use client'
 import { createContext, useContext, PropsWithChildren } from "react";
 import { MovieRepository } from "./interface/MovieRepository";
 import { MovieRepositoryTMDB } from "./MovieRepositoryTMDB";

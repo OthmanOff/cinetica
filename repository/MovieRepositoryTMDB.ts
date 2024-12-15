@@ -1,4 +1,4 @@
-import { Movie } from "@/app/entities/Movie";
+import { Movie } from "@/entities/Movie";
 import { MovieRepository } from "./interface/MovieRepository";
 
 export class MovieRepositoryTMDB implements MovieRepository{
