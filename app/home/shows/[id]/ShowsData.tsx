@@ -1,7 +1,7 @@
 "use client";
-
 import useGetShowData from "./useCase/useGetShowsData";
 import Image from "next/image";
+
 interface ShowDetailsProps {
   id: string;
 }
@@ -41,7 +41,7 @@ const TVShowPage: React.FC<ShowDetailsProps> = ({ id }) => {
             {show.first_air_date}{" "}
           </p>
           <p>
-            {show.number_of_episodes} episodes | {show.number_of_seasons}
+            {show.number_of_episodes} episodes | {show.number_of_seasons}{" "}
             seasons
           </p>
 
