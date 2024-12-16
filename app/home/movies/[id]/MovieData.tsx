@@ -4,6 +4,8 @@ import useGetMovieData from "./useCase/useGetMovieData";
 import useGetCastMovie from "./useCase/useGetCastMovie";
 import { User } from "lucide-react";
 import Image from "next/image";
+import useGetImageMovie from "./useCase/useGetImageMovie";
+import ImageCarousel from "@/components/ui/ImageCarousel";
 interface MovieDetailsProps {
   id: string;
 }
@@ -12,7 +14,7 @@ const baseUrl = "https://image.tmdb.org/t/p/w500";
 const MovieDetails: React.FC<MovieDetailsProps> = ({ id }) => {
   const { movie, isLoading, isError } = useGetMovieData(Number.parseInt(id));
   const { cast } = useGetCastMovie(Number.parseInt(id));
-  console.log(cast);
+  const { images } = useGetImageMovie(Number.parseInt(id));
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -77,7 +79,10 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ id }) => {
             ))}
           </div>
         </div>
+      
       </div>
+      
+      <ImageCarousel images={images} />
     </div>
   );
 };

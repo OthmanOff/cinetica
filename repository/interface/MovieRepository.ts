@@ -1,3 +1,4 @@
+import { Image } from "@/entities/Image";
 import {Movie} from "@/entities/Movie";
 import { Person } from "@/entities/Person";
 
@@ -8,4 +9,5 @@ export interface MovieRepository{
     getDiscoverMovies(): Promise<Movie[]>;
     getInfoMovie(id:number): Promise<Movie>;
     getCastMovie(id:number): Promise<Person[]>;
+    getImagesMovie(id:number): Promise<Image[]>;
 }
