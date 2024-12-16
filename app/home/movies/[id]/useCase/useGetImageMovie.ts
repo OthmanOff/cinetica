@@ -10,7 +10,6 @@ const useGetImageMovie = (id:number) => {
     queryFn: async () => await movieRepository.getImagesMovie(id),
   });
   const images = data as Image[];
-  console.log(images);
   return { images, isLoading, isError };
 };
 
