@@ -1,19 +1,21 @@
 "use client";
 import useGetShowData from "./useCase/useGetShowsData";
 import Image from "next/image";
-
+import useGetCastShow from "./useCase/useGetCastShow";
 interface ShowDetailsProps {
   id: string;
 }
 const baseUrl = "https://image.tmdb.org/t/p/w500";
 const TVShowPage: React.FC<ShowDetailsProps> = ({ id }) => {
   const { show, isLoading, isError } = useGetShowData(Number.parseInt(id));
+  const { cast } = useGetCastShow(Number.parseInt(id));
   if (isLoading) {
     return <p>Loading...</p>;
   }
   if (isError) {
     return <p>Error :&#40;</p>;
   }
+
   return (
     <div className="relative bg-black h-full">
       <div
@@ -50,7 +52,25 @@ const TVShowPage: React.FC<ShowDetailsProps> = ({ id }) => {
             <span className="ml-2 text-gray-300">IMDb Rating</span>
           </div>
 
-          <p className="mt-4 text-base sm:text-lg">{show.overview}</p>
+          <p className="mt-4 text-base sm:text-lg">{show.overview} </p>
+          <h2>Cast</h2>
+          <div className="flex items-center mt-4">
+            <span className="text-xl font-semibold">{cast?.length} actors</span>
+          </div>
+          <div className="flex flex-wrap gap-4 ">
+            {cast?.map((person) => (
+              <div key={person.name} className="flex items-center mt-4">
+                <Image
+                  src={baseUrl + person.profile_path}
+                  alt={person.name}
+                  className="w-12 h-12 rounded-full"
+                  width="200"
+                  height="300"
+                />
+                <span className="ml-2 text-gray-300">{person.character}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

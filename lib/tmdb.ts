@@ -45,3 +45,21 @@ export const tmdbRequestOne = async (endpoint: string) => {
     return error;
   }
 };
+
+export const tmdbRequestCredit = async (endpoint: string) => {
+  const url = `${baseUrl}${endpoint}?language=en-US`;
+  try {
+    const response = await fetch(url, options);
+
+    if (response.ok) {
+      const data = await response.json();
+      return data.cast;
+    } else {
+      console.log(`Error on api tmdb : ${response.status}`);
+      return [];
+    }
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+};

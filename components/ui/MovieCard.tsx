@@ -29,6 +29,7 @@ const MovieCard: React.FC<CardProps> = ({ movie }: CardProps) => {
           <p className="text-sm text-gray-300 line-clamp-2">{movie.overview}</p>
         </div>
       </div>
+      
     </Link>
   );
 };

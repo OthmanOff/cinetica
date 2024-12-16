@@ -1,3 +1,4 @@
+import { Person } from "@/entities/Person";
 import { TVShow } from "@/entities/TVShow";
 
 export interface ShowRepository{
@@ -6,4 +7,5 @@ export interface ShowRepository{
     getTopRatedShows(): Promise<TVShow[]>;
     getDiscoverShows(): Promise<TVShow[]>;
     getInfoShows(id:number): Promise<TVShow>;
+    getCastShow(id:number): Promise<Person[]>;
 }
