@@ -1,5 +1,6 @@
 import { Movie } from "@/entities/Movie";
 import { MovieRepository } from "./interface/MovieRepository";
+import { Person } from "@/entities/Person";
 
 export class MovieRepositoryTMDB implements MovieRepository{
     async getPopularMovies(): Promise<Movie[]> {
@@ -51,6 +52,16 @@ export class MovieRepositoryTMDB implements MovieRepository{
         }
         catch{
             throw new Error("Error while fetching : /api/movies/${id}");
+        }
+    }
+    async getCastMovie(id:number): Promise<Person[]> {
+        try{
+            const req = await fetch(`/api/movies/${id}/cast`);
+            const data = await req.json();
+            return data.data as Promise<Person[]>;
+        }
+        catch{
+            throw new Error("Error while fetching : /api/movies/${id}/cast");
         }
     }
 }

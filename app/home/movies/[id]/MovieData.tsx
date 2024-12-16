@@ -1,7 +1,8 @@
 "use client";
 
 import useGetMovieData from "./useCase/useGetMovieData";
-
+import useGetCastMovie from "./useCase/useGetCastMovie";
+import { User } from "lucide-react";
 import Image from "next/image";
 interface MovieDetailsProps {
   id: string;
@@ -10,7 +11,8 @@ const baseUrl = "https://image.tmdb.org/t/p/w500";
 
 const MovieDetails: React.FC<MovieDetailsProps> = ({ id }) => {
   const { movie, isLoading, isError } = useGetMovieData(Number.parseInt(id));
-
+  const { cast } = useGetCastMovie(Number.parseInt(id));
+  console.log(cast);
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -20,7 +22,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ id }) => {
   }
 
   return (
-    <div className="relative bg-black h-full">
+    <div className="relative bg-black">
       <div
         className="absolute inset-0 bg-cover bg-center h-full w-full"
         style={{ backgroundImage: `url(${baseUrl + movie.backdrop_path})` }}
@@ -52,6 +54,28 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ id }) => {
           </div>
 
           <p className="mt-4 text-base sm:text-lg">{movie.overview}</p>
+          <div className="flex items-center mt-4">
+            <span className="text-xl font-semibold">{cast?.length} actors</span>
+          </div>
+          <div className="flex flex-wrap gap-4">
+            {cast?.map((person) => (
+              <div key={person.name} className="flex items-center mt-4">
+                {person.profile_path ? (
+                  <Image
+                    src={baseUrl + person.profile_path}
+                    alt={person.name}
+                    className="w-12 h-12 rounded-full"
+                    width="200"
+                    height="300"
+                  />
+                ) : (
+                  <User className="w-12 h-12 rounded-full" />
+                )}
+
+                <span className="ml-2 text-gray-300">{person.character}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
